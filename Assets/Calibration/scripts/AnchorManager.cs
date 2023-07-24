@@ -8,8 +8,6 @@ using TMPro;
 public class AnchorManager : MonoBehaviour
 {
     // calibration system
-    public TMP_Text debug_text;
-    public TMP_Text debug_text_2;
     public GameObject main_scene;
     public GameObject calib_marker;
     public GameObject calib_system;
@@ -19,8 +17,7 @@ public class AnchorManager : MonoBehaviour
     private OVRSpatialAnchor main_anchor;
     Action<OVRSpatialAnchor.UnboundAnchor, bool> _onLoadAnchor;
 
- 
-    
+    // idk what this does really but it's important
     private void Awake()
     {
         _onLoadAnchor = OnLocalized;
@@ -28,8 +25,10 @@ public class AnchorManager : MonoBehaviour
     
     void Start()
     {
+        // see if anchor was saved from last session
         if (checkUuid())
         {
+            // disable calibration system if already calibrated
             Palm_menu.calibrated = true;
             calib_system.SetActive(false);
 
@@ -46,10 +45,6 @@ public class AnchorManager : MonoBehaviour
             });
         }
 
-    }
-
-    void Update()
-    {
     }
 
     public void onPressConfirm()
@@ -80,18 +75,10 @@ public class AnchorManager : MonoBehaviour
         // get rid of anchor component
         Destroy(main_scene.GetComponent<OVRSpatialAnchor>());
         
-        // erase anchor locally
+        // erase anchor (local)
         main_anchor.Erase((anchor, success) =>
         {
-            if (!success)
-            {
-                //debug_text.text = $"anchor erase failed";
-                return;
-            }
-            else
-            {
-                //debug_text.text = $"anchor erased: {ConvertUuidToString(main_anchor.Uuid)}";
-            }
+            if (!success) return;
 
             // erase anchor from player prefs (persistent)
             PlayerPrefs.DeleteKey("main_uuid");
@@ -102,17 +89,10 @@ public class AnchorManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         
-        // save anchor locally
+        // save anchor (local)
         spatial_anchor.Save((anchor, success) =>
         {
-            if (!success)
-            {
-                //debug_text.text = "anchor save failed";
-            }
-            else
-            {
-                //debug_text.text = $"anchor saved: {ConvertUuidToString(anchor.Uuid)}";
-            }
+            if (!success) return;
 
             // save anchor to player prefs (persistent)
             PlayerPrefs.SetString("main_uuid", anchor.Uuid.ToString());
@@ -121,35 +101,29 @@ public class AnchorManager : MonoBehaviour
 
     private void Load(OVRSpatialAnchor.LoadOptions options) => OVRSpatialAnchor.LoadUnboundAnchors(options, anchors =>
     {
-        if (anchors == null)
-        {
-            //debug_text.text = "Query failed.";
-            return;
-        }
+        if (anchors == null) return;
 
-        foreach (var anchor in anchors)
+        // anchor array has to be passed even though we're only using one anchor
+        OVRSpatialAnchor.UnboundAnchor anchor = anchors[0];
+
+        // determines anchor's pose in world coordinates
+        if (anchor.Localized)
         {
-            if (anchor.Localized)
-            {
-                _onLoadAnchor(anchor, true);
-            }
-            else if (!anchor.Localizing)
-            {
-                anchor.Localize(_onLoadAnchor);
-            }
+            _onLoadAnchor(anchor, true);
+        }
+        else if (!anchor.Localizing)
+        {
+            anchor.Localize(_onLoadAnchor);
         }
     });
 
     private void OnLocalized(OVRSpatialAnchor.UnboundAnchor unboundAnchor, bool success)
     {
-        if (!success)
-        {
-            //debug_text.text = $"{unboundAnchor} Localization failed!";
-            return;
-        }
+        if (!success) return;
 
         var pose = unboundAnchor.Pose;
 
+        // gets pose of anchor, set main scene to that pose & load everything
         main_scene.transform.position = pose.position;
         main_scene.transform.rotation = pose.rotation;
         main_scene.SetActive(true);
@@ -157,6 +131,7 @@ public class AnchorManager : MonoBehaviour
         main_scene.AddComponent<OVRSpatialAnchor>();
         main_anchor = main_scene.GetComponent<OVRSpatialAnchor>();
 
+        // binds unbound anchor to main scene origin
         unboundAnchor.BindTo(main_anchor);
     }
 
@@ -179,15 +154,7 @@ public class AnchorManager : MonoBehaviour
 
     public bool checkUuid()
     {
-        if (PlayerPrefs.HasKey("main_uuid"))
-        {
-            //debug_text_2.text = $"uuid exists: {PlayerPrefs.GetString("main_uuid")}";
-            return true;
-        }
-        else
-        {
-            //debug_text_2.text = "no main_uuid exists";
-            return false;
-        }
+        if (PlayerPrefs.HasKey("main_uuid")) return true;
+        else return false;
     }
 }
