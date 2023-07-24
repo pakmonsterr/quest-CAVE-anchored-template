@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Text;
 using TMPro;
 
-public class anchor_manager : MonoBehaviour
+public class AnchorManager : MonoBehaviour
 {
     // calibration system
     public TMP_Text debug_text;
@@ -13,7 +13,7 @@ public class anchor_manager : MonoBehaviour
     public GameObject main_scene;
     public GameObject calib_marker;
     public GameObject calib_system;
-    public palm_menu Palm_menu;
+    public PalmMenu Palm_menu;
 
     // anchor stuff
     private OVRSpatialAnchor main_anchor;

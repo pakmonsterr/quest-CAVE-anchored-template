@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Interaction;
 
-public class palm_menu : MonoBehaviour
+public class PalmMenu : MonoBehaviour
 {
     // button stuff
     public GameObject confirm_btn;

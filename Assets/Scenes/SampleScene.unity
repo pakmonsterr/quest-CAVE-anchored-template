@@ -417,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   calibrated: 0
   control_menu: {fileID: 744990584}
+  place_marker: {fileID: 1521405758}
   calib_option: {fileID: 1713862011}
   Anchor_manager: {fileID: 307843499}
 --- !u!1 &309426832
@@ -428,7 +429,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 309426833}
-  - component: {fileID: 309426834}
   m_Layer: 0
   m_Name: Calibration
   m_TagString: Untagged
@@ -451,28 +451,10 @@ Transform:
   - {fileID: 2037620412}
   - {fileID: 4632259883201694912}
   - {fileID: 616057140}
+  - {fileID: 1521405759}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &309426834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309426832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ad825245b267445beec8fdc72df93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  R_hand: {fileID: 688436368}
-  L_hand: {fileID: 963158635}
-  R_hand_obj: {fileID: 535548553}
-  R_controller_obj: {fileID: 1371607098}
-  floor_collider: {fileID: 2037620409}
-  calib_marker: {fileID: 5405101849851713146}
-  calib_ray_LR: {fileID: 616057141}
 --- !u!1 &344158061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1903,7 @@ RectTransform:
   m_GameObject: {fileID: 744990584}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0.0243}
-  m_LocalScale: {x: 0.0061309, y: 0.0061309, z: 0.0061309}
+  m_LocalScale: {x: 0.006360809, y: 0.0061309, z: 0.0061309}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 910884129}
@@ -3001,6 +2983,57 @@ Transform:
   m_Father: {fileID: 4484591560613914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!1 &1521405758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521405759}
+  - component: {fileID: 1521405760}
+  m_Layer: 0
+  m_Name: PlaceMarker holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1521405759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521405758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 309426833}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1521405760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521405758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ad825245b267445beec8fdc72df93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  R_hand: {fileID: 688436368}
+  L_hand: {fileID: 963158635}
+  R_hand_obj: {fileID: 535548553}
+  R_controller_obj: {fileID: 1371607098}
+  floor_collider: {fileID: 2037620409}
+  calib_marker: {fileID: 5405101849851713146}
+  calib_ray_LR: {fileID: 616057141}
 --- !u!1 &1638940201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,8 +3209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3284,7 +3317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (B) Hide Panel
+  m_text: (B) Hide/Show Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3311,8 +3344,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

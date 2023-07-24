@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class place_marker : MonoBehaviour
+public class PlaceMarker : MonoBehaviour
 {
     // hand & controller
     public OVRHand R_hand;

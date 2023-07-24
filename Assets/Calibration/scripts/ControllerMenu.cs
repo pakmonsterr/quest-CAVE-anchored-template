@@ -4,13 +4,13 @@ using UnityEngine;
 using TMPro;
 using Oculus.Interaction;
 
-public class controller_menu : MonoBehaviour
+public class ControllerMenu : MonoBehaviour
 {
     public bool calibrated;
-    public GameObject control_menu;
+    public GameObject control_menu, place_marker;
     public TMP_Text calib_option;
 
-    public anchor_manager Anchor_manager;
+    public AnchorManager Anchor_manager;
     
     // Start is called before the first frame update
     void Start()
@@ -40,6 +40,7 @@ public class controller_menu : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.RawButton.B))
         {
             control_menu.SetActive(!control_menu.activeSelf);
+            place_marker.SetActive(!place_marker.activeSelf);
         }
     }
 }
