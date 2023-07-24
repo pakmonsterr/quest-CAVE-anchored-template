@@ -8,9 +8,7 @@ using TMPro;
 public class AnchorManager : MonoBehaviour
 {
     // calibration system
-    public GameObject main_scene;
-    public GameObject calib_marker;
-    public GameObject calib_system;
+    public GameObject main_scene, calib_marker, calib_system;
     public PalmMenu Palm_menu;
 
     // anchor stuff

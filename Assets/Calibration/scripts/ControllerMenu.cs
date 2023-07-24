@@ -12,17 +12,17 @@ public class ControllerMenu : MonoBehaviour
 
     public AnchorManager Anchor_manager;
     
-    // Start is called before the first frame update
     void Start()
     {
+        // see if anchor was stored from last session
         calibrated = Anchor_manager.checkUuid() ? true : false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         calib_option.text = calibrated ? "(A) Redo" : "(A) Confirm";
         
+        // get button input, run anchor manager function based on input
         if (OVRInput.GetDown(OVRInput.RawButton.A) && control_menu.activeSelf)
         {
             if (!calibrated)
@@ -37,6 +37,7 @@ public class ControllerMenu : MonoBehaviour
             }
         }
 
+        // hide menu & deactivate some calibration 
         if (OVRInput.GetDown(OVRInput.RawButton.B))
         {
             control_menu.SetActive(!control_menu.activeSelf);

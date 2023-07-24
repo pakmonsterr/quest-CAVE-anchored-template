@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class HideOnStart : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+        // hides main scene before calibration if not yet already calibrated
         gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

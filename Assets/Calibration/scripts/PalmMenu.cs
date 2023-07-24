@@ -6,16 +6,17 @@ using Oculus.Interaction;
 public class PalmMenu : MonoBehaviour
 {
     // button stuff
-    public GameObject confirm_btn;
-    public GameObject redo_btn;
+    public GameObject confirm_btn, redo_btn;
     public bool calibrated = false;
     
     // pose stuff
     [SerializeField]
     private ActiveStateSelector _pose;
 
+
     protected virtual void Start()
     {
+        // bind functions to detected poses 
         _pose.WhenSelected += () => palmUp();
         _pose.WhenUnselected += () => palmDown();
         confirm_btn.SetActive(false);

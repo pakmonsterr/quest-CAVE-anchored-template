@@ -5,10 +5,8 @@ using UnityEngine;
 public class PlaceMarker : MonoBehaviour
 {
     // hand & controller
-    public OVRHand R_hand;
-    public OVRHand L_hand;
-    public GameObject R_hand_obj;
-    public GameObject R_controller_obj;
+    public OVRHand R_hand, L_hand;
+    public GameObject R_hand_obj, R_controller_obj;
     bool hand_tracking;
     GameObject R_active;
 
@@ -27,6 +25,7 @@ public class PlaceMarker : MonoBehaviour
 
         if (hand_tracking) 
         {
+            // if hand tracking and hand pinched, cast calib marker (else don't show ray)
             if (R_hand.GetFingerIsPinching(OVRHand.HandFinger.Index) && (R_hand.HandConfidence == OVRHand.TrackingConfidence.High))
             {
                 CastCalibMarker(R_active);
@@ -38,6 +37,7 @@ public class PlaceMarker : MonoBehaviour
         }
         else if (!hand_tracking)
         {
+            // get controller input, cast marker or hide ray accordingly
             OVRInput.Update();
             if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0.95f)
             {
@@ -56,11 +56,13 @@ public class PlaceMarker : MonoBehaviour
     {
         Vector3 endpoint = GetRaycastFloorEndpoint(active_R_obj.transform.position, active_R_obj.transform.rotation);
 
+        // set line render endpoints to hand/controller & floor point
         calib_ray_LR.positionCount = 2;
         calib_ray_coords[0] = R_active.transform.position;
         calib_ray_coords[1] = endpoint;
         calib_ray_LR.SetPositions(calib_ray_coords);
         
+        // match only y-axis rotation of hand (keeps floor marker flat)
         calib_marker.transform.position = endpoint;
         calib_marker.transform.eulerAngles = new Vector3(90, R_active.transform.eulerAngles.y - 5, 0);
     }
