@@ -397,8 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed67efd4b2c654891fef1e43d470fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug_text: {fileID: 0}
-  debug_text_2: {fileID: 0}
   main_scene: {fileID: 1638940201}
   calib_marker: {fileID: 5405101849851713146}
   calib_system: {fileID: 309426832}
@@ -430,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309426833}
   m_Layer: 0
-  m_Name: Calibration
+  m_Name: Calibration System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +467,7 @@ GameObject:
   - component: {fileID: 344158067}
   - component: {fileID: 344158068}
   m_Layer: 0
-  m_Name: confirm_btn
+  m_Name: Confirm Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1596,7 +1594,7 @@ GameObject:
   - component: {fileID: 616057140}
   - component: {fileID: 616057141}
   m_Layer: 0
-  m_Name: calib_ray
+  m_Name: Calibration Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1988,7 +1986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830352961}
   m_Layer: 0
-  m_Name: hand_menu
+  m_Name: Hand Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,7 +2023,7 @@ GameObject:
   - component: {fileID: 904117583}
   - component: {fileID: 904117585}
   m_Layer: 0
-  m_Name: redo_btn
+  m_Name: Redo Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3091,7 +3089,7 @@ GameObject:
   - component: {fileID: 1660045912}
   - component: {fileID: 1660045913}
   m_Layer: 0
-  m_Name: calib_marker_rotation
+  m_Name: Marker Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3500,7 +3498,7 @@ GameObject:
   - component: {fileID: 2037620410}
   - component: {fileID: 2037620409}
   m_Layer: 0
-  m_Name: floor_plane
+  m_Name: Floor Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7972,7 +7970,7 @@ GameObject:
   - component: {fileID: 3671636109039957573}
   - component: {fileID: 4170918523083134176}
   m_Layer: 0
-  m_Name: calib_marker
+  m_Name: Calibration Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14761,7 +14759,7 @@ GameObject:
   - component: {fileID: 5765235406477490095}
   - component: {fileID: 6562988017315550474}
   m_Layer: 0
-  m_Name: calib_marker
+  m_Name: Calibration Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
