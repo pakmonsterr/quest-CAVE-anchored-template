@@ -384,6 +384,7 @@ MonoBehaviour:
   confirm_btn: {fileID: 344158061}
   redo_btn: {fileID: 904117581}
   calibrated: 0
+  Anchor_manager: {fileID: 307843499}
   _pose: {fileID: 7935958764962676891}
 --- !u!114 &307843499
 MonoBehaviour:
@@ -401,6 +402,7 @@ MonoBehaviour:
   calib_marker: {fileID: 5405101849851713146}
   calib_system: {fileID: 309426832}
   Palm_menu: {fileID: 307843498}
+  Controller_menu: {fileID: 307843500}
 --- !u!114 &307843500
 MonoBehaviour:
   m_ObjectHideFlags: 0

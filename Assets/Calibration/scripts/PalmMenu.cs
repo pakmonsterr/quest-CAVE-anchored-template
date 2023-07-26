@@ -7,7 +7,9 @@ public class PalmMenu : MonoBehaviour
 {
     // button stuff
     public GameObject confirm_btn, redo_btn;
-    public bool calibrated = false;
+    public bool calibrated;
+
+    public AnchorManager Anchor_manager;
     
     // pose stuff
     [SerializeField]
@@ -21,6 +23,9 @@ public class PalmMenu : MonoBehaviour
         _pose.WhenUnselected += () => palmDown();
         confirm_btn.SetActive(false);
         redo_btn.SetActive(false);
+
+        // see if anchor was stored from last session
+        calibrated = Anchor_manager.checkUuid() ? true : false;
     }
     
     private void palmUp()

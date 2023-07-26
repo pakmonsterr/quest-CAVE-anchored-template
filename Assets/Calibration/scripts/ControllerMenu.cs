@@ -20,10 +20,14 @@ public class ControllerMenu : MonoBehaviour
 
     void Update()
     {
+        bool hand_tracking = OVRPlugin.GetHandTrackingEnabled();
+        
+        control_menu.SetActive(hand_tracking ? false : true);
+        
         calib_option.text = calibrated ? "(A) Redo" : "(A) Confirm";
         
         // get button input, run anchor manager function based on input
-        if (OVRInput.GetDown(OVRInput.RawButton.A) && control_menu.activeSelf)
+        if (OVRInput.GetDown(OVRInput.RawButton.A) && control_menu.activeSelf && !hand_tracking)
         {
             if (!calibrated)
             {

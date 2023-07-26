@@ -10,6 +10,7 @@ public class AnchorManager : MonoBehaviour
     // calibration system
     public GameObject main_scene, calib_marker, calib_system;
     public PalmMenu Palm_menu;
+    public ControllerMenu Controller_menu;
 
     // anchor stuff
     private OVRSpatialAnchor main_anchor;
@@ -28,6 +29,7 @@ public class AnchorManager : MonoBehaviour
         {
             // disable calibration system if already calibrated
             Palm_menu.calibrated = true;
+            Controller_menu.calibrated = true;
             calib_system.SetActive(false);
 
             // make uuid from stored string, use that to load anchor
@@ -57,6 +59,7 @@ public class AnchorManager : MonoBehaviour
 
         // system management stuff
         Palm_menu.calibrated = true;
+        Controller_menu.calibrated = true;
         main_scene.SetActive(true);
         calib_system.SetActive(false);
 
@@ -67,6 +70,7 @@ public class AnchorManager : MonoBehaviour
     {   
         // system management stuff
         Palm_menu.calibrated = false;
+        Controller_menu.calibrated = false;
         main_scene.SetActive(false);
         calib_system.SetActive(true);
 
