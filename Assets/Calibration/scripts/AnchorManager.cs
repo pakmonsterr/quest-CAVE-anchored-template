@@ -16,7 +16,6 @@ public class AnchorManager : MonoBehaviour
     private OVRSpatialAnchor main_anchor;
     Action<OVRSpatialAnchor.UnboundAnchor, bool> _onLoadAnchor;
 
-    // idk what this does really but it's important
     private void Awake()
     {
         _onLoadAnchor = OnLocalized;
